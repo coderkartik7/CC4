@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioTools - Text Conversion & Dubbing Platform</title>
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">🎵</span>
+                    <span>AudioTools</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Text into Natural Sounding Speech</h1>
+            <p>Convert your notes, dub YouTube videos, and create audio summaries with our advanced text-to-speech technology</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="text-to-speech">Text to Speech</div>
+                <div class="tab" data-tab="youtube-dubbing">YouTube Dubbing</div>
+                <div class="tab" data-tab="summarization">Summarization</div>
+                <div class="tab" data-tab="personalized">Personalized Options</div>
+            </div>
+
+            <div class="tab-content active" id="text-to-speech">
+                <h2>Convert Text to Speech</h2>
+                <p>Paste your text below and convert it to natural sounding audio</p>
+                
+                <div class="form-group">
+                    <label for="text-input">Your Text</label>
+                    <textarea id="text-input" placeholder="Paste your lesson or text here..."></textarea>
+                </div>
+                
+                <div class="options-row">
+                    <div class="option-group">
+                        <label for="voice-style">Voice Style</label>
+                        <select id="voice-style">
+                            <option value="neutral">Neutral</option>
+                            <option value="calm">Calm</option>
+                            <option value="energetic">Energetic</option>
+                            <option value="friendly">Friendly</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="speed">Speed</label>
+                        <select id="speed">
+                            <option value="0.8">Slow</option>
+                            <option value="1" selected>Normal</option>
+                            <option value="1.2">Fast</option>
+                            <option value="1.5">Very Fast</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="pitch">Pitch</label>
+                        <select id="pitch">
+                            <option value="low">Low</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn" id="convert-btn">Convert to Speech</button>
+                
+                <div class="audio-player" id="audio-player" style="display: none;">
+                    <h3>Your Audio</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="player-controls">
+                        <button class="btn" id="play-btn">Play</button>
+                        <button class="btn" id="pause-btn">Pause</button>
+                        <button class="btn" id="download-btn">Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="youtube-dubbing">
+                <h2>YouTube Video Dubbing</h2>
+                <p>Paste a YouTube link to generate a voiceover for the video</p>
+                
+                <div class="form-group">
+                    <label for="youtube-url">YouTube URL</label>
+                    <input type="url" id="youtube-url" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+                
+                <div class="options-row">
+                    <div class="option-group">
+                        <label for="dub-voice">Voice Style</label>
+                        <select id="dub-voice">
+                            <option value="male-1">Male Voice 1</option>
+                            <option value="male-2">Male Voice 2</option>
+                            <option value="female-1">Female Voice 1</option>
+                            <option value="female-2">Female Voice 2</option>
+                            <option value="cartoon">Cartoon Voice</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="dub-speed">Speed</label>
+                        <select id="dub-speed">
+                            <option value="0.8">Slow</option>
+                            <option value="1" selected>Normal</option>
+                            <option value="1.2">Fast</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn btn-accent" id="generate-dub">Generate Dub</button>
+                
+                <div class="side-by-side">
+                    <div class="video-container">
+                        <h3>Original Video</h3>
+                        <div class="video-placeholder">
+                            YouTube Video Preview
+                        </div>
+                    </div>
+                    
+                    <div class="dub-container">
+                        <h3>Dubbed Version</h3>
+                        <div class="video-placeholder">
+                            Dubbed Audio Preview
+                        </div>
+                        <div class="player-controls">
+                            <button class="btn">Play Dub</button>
+                            <button class="btn">Download Dub</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="summarization">
+                <h2>Audio & Text Summarization</h2>
+                <p>Summarize long text or video content into concise formats</p>
+                
+                <div class="form-group">
+                    <label for="summarize-input">Text to Summarize</label>
+                    <textarea id="summarize-input" placeholder="Paste long text or enter a YouTube URL..."></textarea>
+                </div>
+                
+                <div class="options-row">
+                    <div class="option-group">
+                        <label for="summary-length">Summary Length</label>
+                        <select id="summary-length">
+                            <option value="short">Short (Key Points)</option>
+                            <option value="medium" selected>Medium (Paragraph)</option>
+                            <option value="long">Long (Detailed)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="output-format">Output Format</label>
+                        <select id="output-format">
+                            <option value="text">Text Summary</option>
+                            <option value="audio">Audio Summary</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn" id="summarize-btn">Generate Summary</button>
+                
+                <div class="summary-result">
+                    <h3>Summary</h3>
+                    <p>Your summary will appear here...</p>
+                </div>
+            </div>
+
+            <div class="tab-content" id="personalized">
+                <h2>Personalized Listening Options</h2>
+                <p>Customize your audio experience with various options</p>
+                
+                <div class="options-row">
+                    <div class="option-group">
+                        <label for="persona">Voice Persona</label>
+                        <select id="persona">
+                            <option value="default">Default</option>
+                            <option value="robot">Robot</option>
+                            <option value="calm">Calm</option>
+                            <option value="energetic">Energetic</option>
+                            <option value="storyteller">Storyteller</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="playback-speed">Playback Speed</label>
+                        <select id="playback-speed">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.8">0.8x</option>
+                            <option value="1" selected>1x (Normal)</option>
+                            <option value="1.2">1.2x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="pitch-adjustment">Pitch Adjustment</label>
+                        <select id="pitch-adjustment">
+                            <option value="low">Low</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="save-options">
+                    <button class="btn">Save for Offline</button>
+                    <button class="btn">Create Custom Voice</button>
+                    <button class="btn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="feature-grid" id="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>For Students</h3>
+                <p>Convert your lessons and notes into audio for learning on the go.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>For Professionals</h3>
+                <p>Create audio summaries of long documents and meetings.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👁️</div>
+                <h3>Accessibility</h3>
+                <p>Make content accessible for visually impaired users.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AudioTools</h3>
+                    <p>Transforming the way you consume content through advanced text-to-speech technology.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+    </footer>
+
+    <script src="./static/script.js"></script>
+</body>
+</html>
